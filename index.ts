@@ -96,7 +96,9 @@ async function fetchPlayerMatchStats(
     }, {});
 
   // Average the stats and prepare for sorting
-  const filteredStats = Object.values(playerStats).filter(stat => stat.matchDays.length === matchDays.length);
+  const filteredStats = Object.values(playerStats).filter(
+    (stat) => stat.matchDays.length === matchDays.length
+  );
   const averagedStats = filteredStats
     .map((stat) => ({
       ...stat,
@@ -142,7 +144,7 @@ async function fetchPlayerMatchStats(
 // Example usage
 const season = 13;
 const matchDays = ["M02", "M03"]; // Specify match days here
-const topX = 2; // Number of top players per tier you want to get
+const topX = 5; // Number of top players per tier you want to get
 const main = async () => {
   const resp = await fetchPlayerMatchStats(season, matchDays, topX);
   const csvContent = generateCsvContent(resp);
