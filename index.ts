@@ -96,7 +96,8 @@ async function fetchPlayerMatchStats(
     }, {});
 
   // Average the stats and prepare for sorting
-  const averagedStats = Object.values(playerStats)
+  const filteredStats = Object.values(playerStats).filter(stat => stat.matchDays.length === matchDays.length);
+  const averagedStats = filteredStats
     .map((stat) => ({
       ...stat,
       rating: stat.rating / stat.rounds,
